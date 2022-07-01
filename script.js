@@ -3,16 +3,21 @@ const modal = document.querySelector('.modal');
 const modalOverlayWrapper = modal.querySelector('.modal-overlay__wrapper');
 const button = document.querySelector('.button')
 
-button.addEventListener('click', function(evt) {
+button.addEventListener('click', function (evt) {
   evt.preventDefault();
   modal.classList.add('modal--show')
 })
 
-modalOverlayWrapper.addEventListener('click', function(evt) {
+modalOverlayWrapper.addEventListener('click', function (evt) {
   evt.preventDefault();
   modal.classList.remove('modal--show')
 })
 
-modalOverlayWrapper.addEventListener('keydown', function(evt) {
-  modal.classList.remove('modal--show')
+window.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === 27) {
+    evt.preventDefault();
+    if (modal.classList.contains('modal--show')) {
+      modal.classList.remove('modal--show');
+    }
+  }
 })
