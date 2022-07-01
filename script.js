@@ -9,8 +9,10 @@ button.addEventListener('click', function (evt) {
 })
 
 modalOverlayWrapper.addEventListener('click', function (evt) {
-  evt.preventDefault();
-  modal.classList.remove('modal--show')
+    evt.preventDefault();
+  if (evt.target.classList.contains('modal-overlay__wrapper')) {
+    modal.classList.remove('modal--show')
+  }
 })
 
 window.addEventListener('keydown', function (evt) {
